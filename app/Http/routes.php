@@ -19,3 +19,9 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::resource('trace', 'TraceController');
+Route::resource('target', 'TargetController');
+Route::resource('email', 'EmailController');
+Route::resource('member', 'MemberController');
+Route::resource('check', 'CheckController');

@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Email;
+
 class EmailController extends Controller {
 
 	/**
@@ -14,7 +16,9 @@ class EmailController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$emails = Email::paginate(25);
+
+        return view('email.index', compact('emails'));
 	}
 
 	/**
@@ -24,7 +28,7 @@ class EmailController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('email.create');
 	}
 
 	/**

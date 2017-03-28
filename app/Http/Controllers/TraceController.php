@@ -14,7 +14,7 @@ class TraceController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return view('trace.index');
 	}
 
 	/**

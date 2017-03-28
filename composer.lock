@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc668ae044602902b648a5c2946d380e",
+    "content-hash": "47fdb2a0aed2f3c00cece7e9b61ce907",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -789,6 +789,50 @@
                 "schedule"
             ],
             "time": "2017-01-23T04:29:33+00:00"
+        },
+        {
+            "name": "nahidz/imapx",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nahid/imapx.git",
+                "reference": "73354347b0dc8304f9d9216227a5c125ab1a026e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nahid/imapx/zipball/73354347b0dc8304f9d9216227a5c125ab1a026e",
+                "reference": "73354347b0dc8304f9d9216227a5c125ab1a026e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nahidz\\Imapx\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nahid Bin Azhar",
+                    "email": "nahid.dns@gmail.com"
+                }
+            ],
+            "description": "ImapX is library for retriving email from server",
+            "time": "2016-02-22T06:39:49+00:00"
         },
         {
             "name": "nesbot/carbon",

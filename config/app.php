@@ -147,6 +147,7 @@ return [
 
 		// Extras
 		'Collective\Html\HtmlServiceProvider',
+		'Nahidz\Imapx\ImapxServiceProvider',
 	],
 
 	/*

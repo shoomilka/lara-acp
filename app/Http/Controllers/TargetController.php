@@ -70,7 +70,9 @@ class TargetController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$target = Target::find($id);
+		$trace = Trace::find($target->trace_id);
+		return view('target.show', compact(['target', 'trace']));
 	}
 
 	/**

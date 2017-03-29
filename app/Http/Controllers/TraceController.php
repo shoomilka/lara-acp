@@ -80,7 +80,9 @@ class TraceController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$trace = Trace::find($id);
+		$email = Email::find($trace->email_id);
+		return view('trace.show', compact(['trace', 'email']));
 	}
 
 	/**

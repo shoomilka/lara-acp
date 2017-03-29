@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 use App\Email;
 
+use Validator;
+use Redirect;
+use Auth;
+use Session;
+
 class EmailController extends Controller {
 
 	/**
@@ -34,11 +39,29 @@ class EmailController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
+	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		
+        $requestData = $request->all();
+        
+		$requestData['user_id'] = Auth::id();
+
+        $validator = Validator::make($requestData, Email::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        Email::create($requestData);
+
+        Session::flash('flash_message', 'Email додано!');
+
+        return redirect('email');
 	}
 
 	/**

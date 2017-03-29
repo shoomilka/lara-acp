@@ -123,7 +123,11 @@ class EmailController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Email::destroy($id);
+
+        Session::flash('flash_message', 'Email deleted!');
+
+        return redirect('email');
 	}
 
 }

@@ -31,7 +31,7 @@
                                     'type' => 'submit',
                                     'class' => 'btn btn-danger btn-xs',
                                     'title' => 'Видалити',
-                                    'onclick'=>'return confirm("Підтверджуєш видалення?")'
+                                    'onclick'=>'return confirm("Прив'язані КП також будуть стерті. Підтверджуєш видалення?")'
                             )) !!}
                         {!! Form::close() !!}
                     </td>

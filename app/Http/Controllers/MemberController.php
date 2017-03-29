@@ -121,7 +121,11 @@ class MemberController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Member::destroy($id);
+
+        Session::flash('flash_message', 'Member deleted!');
+
+        return redirect('member');
 	}
 
 }

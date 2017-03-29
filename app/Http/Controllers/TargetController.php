@@ -121,7 +121,11 @@ class TargetController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Target::destroy($id);
+
+        Session::flash('flash_message', 'Target deleted!');
+
+        return redirect('target');
 	}
 
 }

@@ -15,6 +15,8 @@ use Session;
 
 use Carbon\Carbon;
 
+use App\Target;
+
 class TraceController extends Controller {
 
 	/**
@@ -137,7 +139,12 @@ class TraceController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		Target::where('trace_id', '=', $id)->delete();
+		Trace::destroy($id);
+
+        Session::flash('flash_message', 'Trace deleted!');
+
+        return redirect('trace');
 	}
 
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1>Не знаю як назвати цю фігню <a href="{{ url('/trace/create') }}" class="btn btn-primary btn-xs" title="Додати нову"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+	<h1>Бревет <a href="{{ url('/trace/create') }}" class="btn btn-primary btn-xs" title="Додати новий бревет"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

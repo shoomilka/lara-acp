@@ -34,7 +34,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/email') }}">Email</a></li>
-					<li><a href="{{ url('/trace') }}">Не знаю як назвати цю фігню</a></li>
+					<li><a href="{{ url('/trace') }}">Бревет</a></li>
 					<li><a href="{{ url('/target') }}">КП</a></li>
 					<li><a href="{{ url('/member') }}">Учасник</a></li>
 					<li><a href="{{ url('/check') }}">Check</a></li>

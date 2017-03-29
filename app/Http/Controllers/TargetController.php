@@ -81,7 +81,9 @@ class TargetController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$target = Target::find($id);
+		$traces = Trace::where('user_id', '=', Auth::id())->lists('title', 'id');
+		return view('target.edit', compact(['target', 'traces']));
 	}
 
 	/**
@@ -90,9 +92,23 @@ class TargetController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$requestData = $request->all();
+
+        $validator = Validator::make($requestData, Target::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+		$trace = Target::findOrFail($id);
+        $trace->update($requestData);
+
+        Session::flash('flash_message', 'Target added!');
+
+        return redirect('target');
 	}
 
 	/**

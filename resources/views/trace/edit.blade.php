@@ -3,10 +3,15 @@
 @section('content')
 <div class="container">
 
-    <h1>Додати бревет</h1>
+    <h1>Редагувати бревет</h1>
     <hr/>
 
-    {!! Form::open(['url' => '/trace', 'class' => 'form-horizontal', 'files' => true]) !!}
+    {!! Form::model($trace, [
+        'method' => 'PATCH',
+        'url' => ['/trace', $trace->id],
+        'class' => 'form-horizontal',
+        'files' => true
+    ]) !!}
 
             <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
                 {!! Form::label('title', 'Назва', ['class' => 'col-sm-3 control-label']) !!}
@@ -43,7 +48,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">
-                {!! Form::submit('Створити', ['class' => 'btn btn-primary form-control']) !!}
+                {!! Form::submit('Оновити', ['class' => 'btn btn-primary form-control']) !!}
             </div>
         </div>
     {!! Form::close() !!}

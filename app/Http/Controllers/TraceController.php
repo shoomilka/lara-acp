@@ -91,7 +91,9 @@ class TraceController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$trace = Trace::find($id);
+		$emails = Email::where('user_id', '=', Auth::id())->lists('email', 'id');
+		return view('trace.edit', compact(['trace', 'emails']));
 	}
 
 	/**
@@ -100,9 +102,29 @@ class TraceController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		
+        $requestData = $request->all();
+        
+		$requestData['user_id'] = Auth::id();
+
+        $validator = Validator::make($requestData, Trace::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+		$requestData['start'] = Carbon::createFromFormat('d-m-Y H', $requestData['start'])->toDateTimeString();
+		$requestData['finish'] = Carbon::createFromFormat('d-m-Y H', $requestData['finish'])->toDateTimeString();
+
+        $trace = Trace::findOrFail($id);
+        $trace->update($requestData);
+
+        Session::flash('flash_message', 'Trace added!');
+
+        return redirect('trace');
 	}
 
 	/**

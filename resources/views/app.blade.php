@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>ACP</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -28,17 +28,15 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				<a class="navbar-brand" href="{{ url('/') }}">ACP</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-
 					<li><a href="{{ url('/email') }}">Email</a></li>
-					<li><a href="{{ url('/trace') }}">Trace</a></li>
-					<li><a href="{{ url('/target') }}">Target</a></li>
-					<li><a href="{{ url('/member') }}">Member</a></li>
+					<li><a href="{{ url('/trace') }}">Не знаю як назвати цю фігню</a></li>
+					<li><a href="{{ url('/target') }}">КП</a></li>
+					<li><a href="{{ url('/member') }}">Учасник</a></li>
 					<li><a href="{{ url('/check') }}">Check</a></li>
 				</ul>
 
@@ -64,5 +62,26 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>
+    <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-formhelpers/2.3.0/js/bootstrap-formhelpers.js"></script>
+
+	<script type="text/javascript">
+        $('#phone').keypress(function() {
+            return $('#phone').val($('#phone').val().replace(/\D/g,''));
+        });
+
+		$(function () {
+            $('#datetimepicker1').datetimepicker({
+                 format: 'DD-MM-YYYY HH'
+            });
+			$('#datetimepicker2').datetimepicker({
+                 format: 'DD-MM-YYYY HH'
+            });
+        });
+    </script>
 </body>
 </html>

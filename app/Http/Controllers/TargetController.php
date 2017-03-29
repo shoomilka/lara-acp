@@ -5,6 +5,13 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Target;
+use App\Trace;
+use Auth;
+use Validator;
+use Redirect;
+use Session;
+
 class TargetController extends Controller {
 
 	/**
@@ -14,7 +21,9 @@ class TargetController extends Controller {
 	 */
 	public function index()
 	{
-		return view('target.index');
+		$targets = Target::paginate(25);
+
+        return view('target.index', compact('targets'));
 	}
 
 	/**
@@ -24,17 +33,33 @@ class TargetController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$traces = Trace::where('user_id', '=', Auth::id())->lists('title', 'id');
+		return view('target.create', compact('traces'));
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
+	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$requestData = $request->all();
+
+        $validator = Validator::make($requestData, Target::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        Target::create($requestData);
+
+        Session::flash('flash_message', 'Target added!');
+
+        return redirect('target');
 	}
 
 	/**

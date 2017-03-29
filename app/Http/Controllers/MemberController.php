@@ -5,6 +5,12 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Member;
+use Auth;
+use Validator;
+use Redirect;
+use Session;
+
 class MemberController extends Controller {
 
 	/**
@@ -14,7 +20,9 @@ class MemberController extends Controller {
 	 */
 	public function index()
 	{
-		return view('member.index');
+		$members = Member::paginate(25);
+
+        return view('member.index', compact('members'));
 	}
 
 	/**
@@ -24,17 +32,34 @@ class MemberController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('member.create');
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
+	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$requestData = $request->all();
+        
+		$requestData['user_id'] = Auth::id();
+
+        $validator = Validator::make($requestData, Member::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        Member::create($requestData);
+
+        Session::flash('flash_message', 'Member added!');
+
+        return redirect('member');
 	}
 
 	/**

@@ -5,6 +5,16 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Trace;
+use App\Email;
+use Auth;
+
+use Validator;
+use Redirect;
+use Session;
+
+use Carbon\Carbon;
+
 class TraceController extends Controller {
 
 	/**
@@ -14,7 +24,9 @@ class TraceController extends Controller {
 	 */
 	public function index()
 	{
-		return view('trace.index');
+		$traces = Trace::paginate(25);
+
+        return view('trace.index', compact('traces'));
 	}
 
 	/**
@@ -24,17 +36,40 @@ class TraceController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$emails = Email::where('user_id', '=', Auth::id())->lists('email', 'id');
+
+		return view('trace.create', compact('emails'));
 	}
 
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param \Illuminate\Http\Request $request
+	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		
+        $requestData = $request->all();
+        
+		$requestData['user_id'] = Auth::id();
+
+        $validator = Validator::make($requestData, Trace::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+		$requestData['start'] = Carbon::createFromFormat('d-m-Y H', $requestData['start'])->toDateTimeString();
+		$requestData['finish'] = Carbon::createFromFormat('d-m-Y H', $requestData['finish'])->toDateTimeString();
+
+        Trace::create($requestData);
+
+        Session::flash('flash_message', 'Trace added!');
+
+        return redirect('trace');
 	}
 
 	/**

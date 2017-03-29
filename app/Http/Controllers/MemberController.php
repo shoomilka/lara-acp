@@ -81,7 +81,8 @@ class MemberController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$member = Member::find($id);
+		return view('member.edit', compact('member'));
 	}
 
 	/**
@@ -90,9 +91,25 @@ class MemberController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$requestData = $request->all();
+        
+		$requestData['user_id'] = Auth::id();
+
+        $validator = Validator::make($requestData, Member::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $member = Member::findOrFail($id);
+		$member->update($requestData);
+
+        Session::flash('flash_message', 'Member added!');
+
+        return redirect('member');
 	}
 
 	/**

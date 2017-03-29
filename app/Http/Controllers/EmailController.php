@@ -83,7 +83,8 @@ class EmailController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$email = Email::find($id);
+		return view('email.edit', compact('email'));
 	}
 
 	/**
@@ -92,9 +93,25 @@ class EmailController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$requestData = $request->all();
+        
+		$requestData['user_id'] = Auth::id();
+
+        $validator = Validator::make($requestData, Email::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        $email = Email::findOrFail($id);
+		$email->update($requestData);
+
+        Session::flash('flash_message', 'Email додано!');
+
+        return redirect('email');
 	}
 
 	/**

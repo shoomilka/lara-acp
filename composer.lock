@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47fdb2a0aed2f3c00cece7e9b61ce907",
+    "content-hash": "7a5089ecfa161f0cd375b8c0b412f520",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -792,16 +792,16 @@
         },
         {
             "name": "nahidz/imapx",
-            "version": "1.0.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nahid/imapx.git",
-                "reference": "73354347b0dc8304f9d9216227a5c125ab1a026e"
+                "reference": "390b61d721edb9a05f3203cb68924b754d0b0a6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nahid/imapx/zipball/73354347b0dc8304f9d9216227a5c125ab1a026e",
-                "reference": "73354347b0dc8304f9d9216227a5c125ab1a026e",
+                "url": "https://api.github.com/repos/nahid/imapx/zipball/390b61d721edb9a05f3203cb68924b754d0b0a6a",
+                "reference": "390b61d721edb9a05f3203cb68924b754d0b0a6a",
                 "shasum": ""
             },
             "require": {
@@ -832,7 +832,7 @@
                 }
             ],
             "description": "ImapX is library for retriving email from server",
-            "time": "2016-02-22T06:39:49+00:00"
+            "time": "2016-04-21T11:02:40+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -3252,7 +3252,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "nahidz/imapx": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

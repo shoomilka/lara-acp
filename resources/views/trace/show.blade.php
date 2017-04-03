@@ -14,7 +14,7 @@
                     'type' => 'submit',
                     'class' => 'btn btn-danger btn-xs',
                     'title' => 'Видалити бревет',
-                    'onclick'=>'return confirm("Прив'язані КП також будуть стерті. Підтверджуєш видалення?")'
+                    'onclick'=>'return confirm("Прив\'язані КП також будуть стерті. Підтверджуєш видалення?")'
             ))!!}
         {!! Form::close() !!}
     </h1>

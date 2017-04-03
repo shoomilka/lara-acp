@@ -30,6 +30,8 @@
                     <td> {{ $email->pass }} </td>
                     </tr><tr><th> pop3 </th>
                     <td> {{ $email->pop3 }} </td>
+                    </tr><tr><th> Порт </th>
+                    <td> {{ $email->port }} </td>
                 </tr>
             </tbody>
         </table>

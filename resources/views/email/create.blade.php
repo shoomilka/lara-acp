@@ -29,6 +29,13 @@
                     {!! $errors->first('pop3', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group {{ $errors->has('port') ? 'has-error' : ''}}">
+                {!! Form::label('port', 'Порт', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('port', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('port', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
 
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">

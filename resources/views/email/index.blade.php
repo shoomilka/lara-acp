@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Email </th><th> pop3 </th>
+                    <th>S.No</th><th> Email </th><th> pop3 </th><th> Порт </th>
                 </tr>
             </thead>
             <tbody>
@@ -18,6 +18,7 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->pop3 }}</td>
+                    <td>{{ $item->port }}</td>
                     <td>
                         <a href="{{ url('/email/' . $item->id) }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ url('/email/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Редагувати пошту"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>

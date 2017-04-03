@@ -23,14 +23,15 @@ class Email extends Model {
      *
      * @var array
      */
-    protected $fillable = ['email', 'pass', 'user_id', 'pop3'];
+    protected $fillable = ['email', 'pass', 'user_id', 'pop3', 'port'];
 
     static function getValidationRules() {
         return array(
             'email' => 'required|email',
             'user_id' => 'required|exists:users,id',
             'pass' => 'required|min:6',
-            'pop3' => 'required'
+            'pop3' => 'required',
+            'port' => 'required|numeric|max:9999|min:0'
         );
     }
 

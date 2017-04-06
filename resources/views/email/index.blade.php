@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1>Emails <a href="{{ url('/email/create') }}" class="btn btn-primary btn-xs" title="Додати нову пошту"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+	<h1>Emails <a href="/index.php/email/create" class="btn btn-primary btn-xs" title="Додати нову пошту"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -20,8 +20,8 @@
                     <td>{{ $item->pop3 }}</td>
                     <td>{{ $item->port }}</td>
                     <td>
-                        <a href="{{ url('/email/' . $item->id) }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/email/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Редагувати пошту"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/email/' . $item->id }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/email/' . $item->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати пошту"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/email', $item->id],

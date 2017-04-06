@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1>Учасник <a href="{{ url('/member/create') }}" class="btn btn-primary btn-xs" title="Додати нового учасника"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+	<h1>Учасник <a href="/index.php/member/create" class="btn btn-primary btn-xs" title="Додати нового учасника"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -19,8 +19,8 @@
                     <td>{{ $item->name }}</td>
 					<td>{{ $item->phone }}</td>
                     <td>
-                        <a href="{{ url('/member/' . $item->id) }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/member/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Редагувати учасника"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/member/' . $item->id }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/member/' . $item->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати учасника"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/member', $item->id],

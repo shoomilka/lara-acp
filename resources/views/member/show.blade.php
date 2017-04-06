@@ -4,7 +4,7 @@
 <div class="container">
 
     <h1>Учасник #{{ $member->id }}
-        <a href="{{ url('member/' . $member->id . '/edit') }}" class="btn btn-primary btn-xs" title="Редагувати учасника"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+        <a href="{{ 'member/' . $member->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати учасника"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
         {!! Form::open([
             'method'=>'DELETE',
             'url' => ['member', $member->id],

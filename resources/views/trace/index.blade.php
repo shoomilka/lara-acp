@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1>Бревет <a href="{{ url('/trace/create') }}" class="btn btn-primary btn-xs" title="Додати новий бревет"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+	<h1>Бревет <a href="{{ '/index.php/trace/create' }}" class="btn btn-primary btn-xs" title="Додати новий бревет"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -20,8 +20,8 @@
                     <td>{{ $item->start }}</td>
                     <td>{{ $item->finish }}</td>
                     <td>
-                        <a href="{{ url('/trace/' . $item->id) }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/trace/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Редагувати"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/trace/' . $item->id }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/trace/' . $item->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/trace', $item->id],

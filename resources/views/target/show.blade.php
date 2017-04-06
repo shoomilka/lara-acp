@@ -4,7 +4,7 @@
 <div class="container">
 
     <h1>КП #{{ $target->id }}
-        <a href="{{ url('target/' . $target->id . '/edit') }}" class="btn btn-primary btn-xs" title="Редагувати КП"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+        <a href="{{ 'target/' . $target->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати КП"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
         {!! Form::open([
             'method'=>'DELETE',
             'url' => ['target', $target->id],

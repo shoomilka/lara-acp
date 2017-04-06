@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1>КП <a href="{{ url('/target/create') }}" class="btn btn-primary btn-xs" title="Додати нове КП"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
+	<h1>КП <a href="/index.php/target/create" class="btn btn-primary btn-xs" title="Додати нове КП"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -17,8 +17,8 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $item->title }}</td>
                     <td>
-                        <a href="{{ url('/target/' . $item->id) }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
-                        <a href="{{ url('/target/' . $item->id . '/edit') }}" class="btn btn-primary btn-xs" title="Редагувати КП"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/target/' . $item->id }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/target/' . $item->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати КП"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['/target', $item->id],

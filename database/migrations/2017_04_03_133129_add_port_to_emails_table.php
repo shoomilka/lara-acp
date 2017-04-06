@@ -14,7 +14,7 @@ class AddPortToEmailsTable extends Migration {
 	{
 		Schema::table('emails', function(Blueprint $table)
 		{
-			$table->integer('port');
+			$table->integer('port')->default(0);
 		});
 	}
 

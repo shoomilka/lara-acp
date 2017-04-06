@@ -14,7 +14,7 @@ class AddPop3ToEmailsTable extends Migration {
 	{
 		Schema::table('emails', function(Blueprint $table)
 		{
-			$table->string('pop3');
+			$table->string('pop3')->default('');
 		});
 	}
 

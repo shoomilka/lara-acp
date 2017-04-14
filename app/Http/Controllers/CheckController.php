@@ -5,6 +5,10 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use App\Check;
+use App\Target;
+
 class CheckController extends Controller {
 
 	/**
@@ -14,7 +18,9 @@ class CheckController extends Controller {
 	 */
 	public function index()
 	{
-		return view('check.index');
+		$targets = Target::all()->lists('title', 'id');
+		$checks = Check::where('target_id', 0)->paginate(25);
+		return view('check.index', compact(array('checks', 'targets')));
 	}
 
 	/**
@@ -65,9 +71,14 @@ class CheckController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$requestData = $request->all();
+		$check = Check::find($id);
+		$check->target_id = $requestData['target_id'];
+		$check->checked = true;
+		$check->save();
+		return redirect('check');
 	}
 
 	/**

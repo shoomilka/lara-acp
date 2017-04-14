@@ -14,6 +14,8 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+Route::get('traces', 'WelcomeController@traces');
+Route::get('results/{id}', 'WelcomeController@trace');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

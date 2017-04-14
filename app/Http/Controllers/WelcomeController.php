@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Trace;
+use App\Check;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,7 +33,17 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		return $this->traces();
 		return view('welcome');
 	}
 
+	public function traces(){
+		$traces = Trace::orderBy('id', 'DESC')->paginate(25);
+		return view('traces', compact('traces'));
+	}
+
+	public function trace($id){
+		$checks = Check::where('checked', true)->orderBy('phone')->paginate(25);
+		return view('trace', compact('checks'));
+	}
 }

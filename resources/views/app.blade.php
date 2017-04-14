@@ -30,7 +30,7 @@
 				</button>
 				<a class="navbar-brand" href="{{ url('/') }}">ACP</a>
 			</div>
-
+					@if (!Auth::guest())
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/index.php/email">Email</a></li>
@@ -39,7 +39,7 @@
 					<li><a href="/index.php/member">Учасник</a></li>
 					<li><a href="/index.php/check">Check</a></li>
 				</ul>
-
+					@endif
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="/index.php/auth/login">Login</a></li>

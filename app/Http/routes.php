@@ -22,8 +22,10 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('trace', 'TraceController');
-Route::resource('target', 'TargetController');
-Route::resource('email', 'EmailController');
-Route::resource('member', 'MemberController');
-Route::resource('check', 'CheckController');
+Route::group(['middleware' => ['auth']], function () {
+	Route::resource('trace', 'TraceController');
+	Route::resource('target', 'TargetController');
+	Route::resource('email', 'EmailController');
+	Route::resource('member', 'MemberController');
+	Route::resource('check', 'CheckController');
+});

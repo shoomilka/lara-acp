@@ -2,6 +2,7 @@
 
 use App\Trace;
 use App\Check;
+use App\Member;
 
 class WelcomeController extends Controller {
 
@@ -44,6 +45,7 @@ class WelcomeController extends Controller {
 
 	public function trace($id){
 		$checks = Check::where('checked', true)->orderBy('phone')->paginate(25);
-		return view('trace', compact('checks'));
+		$members = Member::all()->lists('name', 'phone');
+		return view('trace', compact(array('checks', 'members')));
 	}
 }

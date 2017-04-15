@@ -16,7 +16,7 @@
             @foreach($checks as $item)
                 <tr>
                     <td>{{ $i++ }}</td>
-                    <td>{{ $item->phone }}</td>
+                    <td>{{ (isset($members[$item->phone]))?$members[$item->phone]:$item->phone }}</td>
                     <td>{{ $item->time }}</td>
                     <td>{{ $item->target_title }}</td>
                 </tr>

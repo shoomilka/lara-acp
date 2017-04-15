@@ -11,6 +11,7 @@ use Auth;
 use Validator;
 use Redirect;
 use Session;
+use App\Check;
 
 class TargetController extends Controller {
 
@@ -121,6 +122,8 @@ class TargetController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		Check::where('target_id', '=', $id)->delete();
+		
 		Target::destroy($id);
 
         Session::flash('flash_message', 'Target deleted!');

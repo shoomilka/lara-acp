@@ -28,6 +28,8 @@
                     <td> {{ $target->title }} </td>
                     </tr><tr><th> Бревет </th>
                     <td> {{ $trace->title }} </td>
+                    </tr><tr><th> Координата </th>
+                    <td> {{ $target->coordinate }} </td>
                 </tr>
             </tbody>
         </table>

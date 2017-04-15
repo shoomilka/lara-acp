@@ -29,6 +29,14 @@
                 </div>
             </div>
 
+            <div class="form-group {{ $errors->has('coordinate') ? 'has-error' : ''}}">
+                {!! Form::label('coordinate', 'Координата КП', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::number('coordinate', null, ['class' => 'form-control', 'step' => '0.01']) !!}
+                    {!! $errors->first('coordinate', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">
                 {!! Form::submit('Оновити', ['class' => 'btn btn-primary form-control']) !!}

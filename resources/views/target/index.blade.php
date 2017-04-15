@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Назва </th>
+                    <th>S.No</th><th> Назва </th><th> Координата </th>
                 </tr>
             </thead>
             <tbody>
@@ -16,6 +16,7 @@
                 <tr>
                     <td>{{ $i++ }}</td>
                     <td>{{ $item->title }}</td>
+                    <td>{{ $item->coordinate }}</td>
                     <td>
                         <a href="{{ '/index.php/target/' . $item->id }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ '/index.php/target/' . $item->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати КП"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>

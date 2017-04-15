@@ -76,10 +76,10 @@
 
 		$(function () {
             $('#datetimepicker1').datetimepicker({
-                 format: 'DD-MM-YYYY HH'
+                 format: 'DD-MM-YYYY HH:mm'
             });
 			$('#datetimepicker2').datetimepicker({
-                 format: 'DD-MM-YYYY HH'
+                 format: 'DD-MM-YYYY HH:mm'
             });
         });
 

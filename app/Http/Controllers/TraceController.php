@@ -65,8 +65,8 @@ class TraceController extends Controller {
                         ->withInput();
         }
 
-		$requestData['start'] = Carbon::createFromFormat('d-m-Y H', $requestData['start'])->toDateTimeString();
-		$requestData['finish'] = Carbon::createFromFormat('d-m-Y H', $requestData['finish'])->toDateTimeString();
+		$requestData['start'] = Carbon::createFromFormat('d-m-Y H:i', $requestData['start'])->toDateTimeString();
+		$requestData['finish'] = Carbon::createFromFormat('d-m-Y H:i', $requestData['finish'])->toDateTimeString();
 
         Trace::create($requestData);
 
@@ -121,8 +121,8 @@ class TraceController extends Controller {
                         ->withInput();
         }
 
-		$requestData['start'] = Carbon::createFromFormat('d-m-Y H', $requestData['start'])->toDateTimeString();
-		$requestData['finish'] = Carbon::createFromFormat('d-m-Y H', $requestData['finish'])->toDateTimeString();
+		$requestData['start'] = Carbon::createFromFormat('d-m-Y H:i', $requestData['start'])->toDateTimeString();
+		$requestData['finish'] = Carbon::createFromFormat('d-m-Y H:i', $requestData['finish'])->toDateTimeString();
 
         $trace = Trace::findOrFail($id);
         $trace->update($requestData);

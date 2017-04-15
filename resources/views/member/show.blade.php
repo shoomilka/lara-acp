@@ -28,6 +28,12 @@
                     <td> {{ $member->name }} </td>
                     </tr><tr><th> Телефон </th>
                     <td> {{ $member->phone }} </td>
+                    </tr><tr><th> Місто </th>
+                    <td> {{ $member->city }} </td>
+                    </tr><tr><th> Рік народження </th>
+                    <td> {{ $member->year }} </td>
+                    </tr><tr><th> Велосипед </th>
+                    <td> {{ $member->cycle }} </td>
                 </tr>
             </tbody>
         </table>

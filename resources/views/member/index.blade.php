@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Ім'я </th><th> Телефон </th>
+                    <th>S.No</th><th> Ім'я </th><th> Телефон </th><th> Місто </th><th> Рік народження </th><th> Велосипед </th>
                 </tr>
             </thead>
             <tbody>
@@ -18,6 +18,9 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $item->name }}</td>
 					<td>{{ $item->phone }}</td>
+                    <td>{{ $item->city }}</td>
+                    <td>{{ $item->year }}</td>
+                    <td>{{ $item->cycle }}</td>
                     <td>
                         <a href="{{ '/index.php/member/' . $item->id }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
                         <a href="{{ '/index.php/member/' . $item->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати учасника"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>

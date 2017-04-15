@@ -27,6 +27,27 @@
                     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group {{ $errors->has('city') ? 'has-error' : ''}}">
+                {!! Form::label('city', "Місто", ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('city', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('city', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('year') ? 'has-error' : ''}}">
+                {!! Form::label('year', "Рік народження", ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::number('year', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('year', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+            <div class="form-group {{ $errors->has('cycle') ? 'has-error' : ''}}">
+                {!! Form::label('cycle', "Велосипед", ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('cycle', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('cycle', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
 
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">

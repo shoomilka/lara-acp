@@ -23,7 +23,7 @@ class Trace extends Model {
      *
      * @var array
      */
-    protected $fillable = ['title', 'email_id', 'user_id', 'start', 'finish'];
+    protected $fillable = ['title', 'email_id', 'user_id', 'start', 'finish', 'description'];
 
     static function getValidationRules() {
         return array(
@@ -32,6 +32,7 @@ class Trace extends Model {
             'title' => 'required|min:6',
 			'start' => 'required|date_format:d-m-Y H:i|after:yesterday',
 			'finish' => 'required|date_format:d-m-Y H:i|after:yesterday',
+            'description' => 'required',
         );
     }
 

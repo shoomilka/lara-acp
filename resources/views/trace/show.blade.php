@@ -32,6 +32,8 @@
                     <td> {{ $trace->start }} </td>
                     </tr><tr><th> Час закінчення </th>
                     <td> {{ $trace->finish }} </td>
+                    </tr><tr><th> Опис </th>
+                    <td> {{ $trace->description }} </td>
                 </tr>
             </tbody>
         </table>

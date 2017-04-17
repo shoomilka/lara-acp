@@ -43,6 +43,13 @@
                     {!! $errors->first('cycle', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
+            <div class="form-group {{ $errors->has('nick') ? 'has-error' : ''}}">
+                {!! Form::label('nick', "Нік", ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('nick', null, ['class' => 'form-control']) !!}
+                    {!! $errors->first('nick', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
 
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">

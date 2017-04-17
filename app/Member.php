@@ -23,7 +23,7 @@ class Member extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'phone', 'user_id', 'city', 'year', 'cycle'];
+    protected $fillable = ['name', 'phone', 'user_id', 'city', 'year', 'cycle', 'nick'];
 
     static function getValidationRules() {
         return array(
@@ -32,7 +32,8 @@ class Member extends Model {
 			'phone' => 'required|regex:/(\d\d\d\d\d\d\d\d\d\d)/',
             'city' => 'required|max:50',
             'year' => 'required|numeric|min:1900',
-            'cycle' => 'required|max:50',
+            'cycle' => 'max:50',
+            'nick' => 'max:50',
         );
     }
 

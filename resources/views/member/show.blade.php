@@ -34,6 +34,8 @@
                     <td> {{ $member->year }} </td>
                     </tr><tr><th> Велосипед </th>
                     <td> {{ $member->cycle }} </td>
+                    </tr><tr><th> Нік </th>
+                    <td> {{ $member->nick }} </td>
                 </tr>
             </tbody>
         </table>

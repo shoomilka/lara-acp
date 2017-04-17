@@ -28,7 +28,7 @@
                     <td> {{ $target->title }} </td>
                     </tr><tr><th> Бревет </th>
                     <td> {{ $trace->title }} </td>
-                    </tr><tr><th> Координата </th>
+                    </tr><tr><th> Кілометр </th>
                     <td> {{ $target->coordinate }} </td>
                     </tr><tr><th> Початок </th>
                     <td> {{ $target->start }} </td>

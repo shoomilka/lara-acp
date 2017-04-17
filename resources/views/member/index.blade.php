@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Ім'я </th><th> Телефон </th><th> Місто </th><th> Рік народження </th><th> Велосипед </th><th> Нік </th>
+                    <th>S.No</th><th> Ім'я </th><th> Телефон </th><th> Місто </th><th> Рік народження </th><th> Велосипед </th><th> Нік </th><th> Дії </th>
                 </tr>
             </thead>
             <tbody>

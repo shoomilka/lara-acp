@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Email </th><th> pop3 </th><th> Порт </th>
+                    <th>S.No</th><th> Email </th><th> pop3 </th><th> Порт </th><th> Дії </th>
                 </tr>
             </thead>
             <tbody>

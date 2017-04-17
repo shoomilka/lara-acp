@@ -85,7 +85,9 @@ class TraceController extends Controller {
 	{
 		$trace = Trace::find($id);
 		$email = Email::find($trace->email_id);
-		return view('trace.show', compact(['trace', 'email']));
+		$targets = $trace->hasMany('App\Target', 'trace_id', 'id')
+						 ->orderBy('coordinate')->paginate(25);
+		return view('trace.show', compact(['trace', 'email', 'targets']));
 	}
 
 	/**

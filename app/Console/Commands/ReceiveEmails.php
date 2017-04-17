@@ -40,7 +40,11 @@ class ReceiveEmails extends Command {
 	public function fire()
 	{
 		$emails = Email::all();
-		foreach($emails as $email) $email->receiveLetters();
+		foreach($emails as $email){
+			$traces = $email->hasMany('App\Trace', 'email_id')->where('is_active', 1)->get();
+			//echo $traces->count();
+			if($traces->count() > 0) echo 'a'; //$email->receiveLetters();
+		}
 		echo 'finish';
 	}
 

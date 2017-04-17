@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Trace extends Model {
 
 	/**
@@ -23,7 +25,8 @@ class Trace extends Model {
      *
      * @var array
      */
-    protected $fillable = ['title', 'email_id', 'user_id', 'start', 'finish', 'description'];
+    protected $fillable = ['title', 'email_id', 'user_id', 'start', 'finish', 'description',
+                           'is_active'];
 
     static function getValidationRules() {
         return array(
@@ -34,6 +37,18 @@ class Trace extends Model {
 			'finish' => 'required|date_format:d-m-Y H:i|after:yesterday',
             'description' => 'required',
         );
+    }
+
+    static function checkActive() {
+        $traces = Trace::where('is_active', 1)->get();
+        $now = Carbon::now();
+        foreach($traces as $trace){
+            $tempe = Carbon::createFromFormat('Y-m-d H:i:s', $trace->finish);
+            if($tempe->lt($now)){
+                $trace->is_active = false;
+                $trace->save();
+            }
+        }
     }
 
 }

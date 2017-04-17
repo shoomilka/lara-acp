@@ -88,6 +88,7 @@ class Email extends Model {
 			$check['phone'] = $number[0];
 
 			Check::create($check);
+			Trace::checkActive();
 		}
     }
 

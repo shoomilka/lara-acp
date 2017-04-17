@@ -32,6 +32,23 @@
                 </div>
             </div>
 
+<!--start (time)-->
+            <div class="form-group {{ $errors->has('start') ? 'has-error' : ''}}">
+                {!! Form::label('start', 'Час початку', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('start', null, ['class' => 'form-control', 'id' => 'datetimepicker1']) !!}
+                    {!! $errors->first('start', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+<!--finish (time)-->
+            <div class="form-group {{ $errors->has('finish') ? 'has-error' : ''}}">
+                {!! Form::label('finish', 'Час завершення', ['class' => 'col-sm-3 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('finish', null, ['class' => 'form-control', 'id' => 'datetimepicker2']) !!}
+                    {!! $errors->first('finish', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-3">
                 {!! Form::submit('Створити', ['class' => 'btn btn-primary form-control']) !!}

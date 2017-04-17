@@ -30,6 +30,10 @@
                     <td> {{ $trace->title }} </td>
                     </tr><tr><th> Координата </th>
                     <td> {{ $target->coordinate }} </td>
+                    </tr><tr><th> Початок </th>
+                    <td> {{ $target->start }} </td>
+                    </tr><tr><th> Завершення </th>
+                    <td> {{ $target->finish }} </td>
                 </tr>
             </tbody>
         </table>

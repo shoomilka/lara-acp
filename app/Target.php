@@ -23,13 +23,15 @@ class Target extends Model {
      *
      * @var array
      */
-    protected $fillable = ['title', 'trace_id', 'coordinate'];
+    protected $fillable = ['title', 'trace_id', 'coordinate', 'start', 'finish'];
 
     static function getValidationRules() {
         return array(
             'trace_id' => 'required|exists:traces,id',
             'title' => 'required|min:3',
-            'coordinate' => 'required|numeric|min:1'
+            'coordinate' => 'required|numeric|min:1',
+            'start' => 'required|date_format:d-m-Y H:i',
+			'finish' => 'required|date_format:d-m-Y H:i',
         );
     }
 

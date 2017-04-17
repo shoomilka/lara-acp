@@ -77,5 +77,59 @@
         </table>
         <div class="pagination-wrapper"> {!! $targets->render() !!} </div>
     </div>
+    <h1> Участиники </h1>
+    {!! Form::open(['url' => '/register/'.$trace->id, 'class' => 'form-horizontal', 'style' => 'display:inline', 'files' => true]) !!}
+            <div class="form-group {{ $errors->has('member_id') ? 'has-error' : ''}}">
+                {!! Form::label('member_id', 'Учасник', ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::select('member_id', $members, null, ['class' => 'form-control', 'style' => 'display:inline']) !!}
+                    {!! $errors->first('member_id', '<p class="help-block">:message</p>') !!}
+                </div>
+                <div class="col-sm-3">
+                    {!! Form::submit('Додати', ['class' => 'btn btn-primary form-control', 'style' => 'display:inline']) !!}
+                </div>
+            </div>
+    {!! Form::close() !!}
+    <div class="table">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>S.No</th><th> Ім'я </th><th> Телефон </th><th> Місто </th><th> Рік народження </th><th> Велосипед </th><th> Нік </th><th> Дії </th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <?php $i = 1 ?>
+            @foreach($current_members as $item)
+                <tr>
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $item->name }}</td>
+					<td>{{ $item->phone }}</td>
+                    <td>{{ $item->city }}</td>
+                    <td>{{ $item->year }}</td>
+                    <td>{{ $item->cycle }}</td>
+                    <td>{{ $item->nick }}</td>
+                    <td>
+                        <a href="{{ '/index.php/member/' . $item->id }}" class="btn btn-success btn-xs" title="Переглянути деталі"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"/></a>
+                        <a href="{{ '/index.php/member/' . $item->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати учасника"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+                        {!! Form::open([
+                            'method'=>'DELETE',
+                            'url' => ['/register/'.$trace->id.'/'.$item->id],
+                            'style' => 'display:inline'
+                        ]) !!}
+                            {!! Form::button('<span class="glyphicon glyphicon-remove-sign" aria-hidden="true" title="Відписати учасника" />', array(
+                                    'type' => 'submit',
+                                    'class' => 'btn btn-danger btn-xs',
+                                    'title' => 'Відписати учасника',
+                                    'onclick'=>'return confirm("Підтверджуєш зняття з реєстрації?")'
+                            )) !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+        <div class="pagination-wrapper"> {!! $current_members->render() !!} </div>
+    </div>
 </div>
 @endsection

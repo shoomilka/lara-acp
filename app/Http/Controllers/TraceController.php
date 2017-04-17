@@ -17,6 +17,8 @@ use Carbon\Carbon;
 
 use App\Target;
 use App\Check;
+use App\Member;
+use App\Registered;
 
 class TraceController extends Controller {
 
@@ -87,7 +89,15 @@ class TraceController extends Controller {
 		$email = Email::find($trace->email_id);
 		$targets = $trace->hasMany('App\Target', 'trace_id', 'id')
 						 ->orderBy('coordinate')->paginate(25);
-		return view('trace.show', compact(['trace', 'email', 'targets']));
+		$members = Member::where('user_id', Auth::id())->lists('name', 'id');
+		$current_members = Registered::where('trace_id', $id)
+									 ->lists('created_at', 'member_id');
+		$members = array_diff_key($members, $current_members);
+		$current_members = array_keys($current_members);
+		$current_members = Member::whereIn('id', $current_members)->orderBy('name')
+								 ->paginate(25);
+		return view('trace.show', compact(['trace', 'email', 'targets', 'members',
+										   'current_members']));
 	}
 
 	/**

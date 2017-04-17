@@ -23,6 +23,8 @@ Route::controllers([
 ]);
 
 Route::group(['middleware' => ['auth']], function () {
+	Route::post('register/{id}', 'RegisterController@register');
+	Route::delete('register/{trace_id}/{member_id}', 'RegisterController@unregister');
 	Route::resource('trace', 'TraceController');
 	Route::resource('target', 'TargetController');
 	Route::resource('email', 'EmailController');

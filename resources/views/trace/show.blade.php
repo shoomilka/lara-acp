@@ -77,7 +77,7 @@
         </table>
         <div class="pagination-wrapper"> {!! $targets->render() !!} </div>
     </div>
-    <h1> Участиники </h1>
+    <h1> Учасники </h1>
     {!! Form::open(['url' => '/register/'.$trace->id, 'class' => 'form-horizontal', 'style' => 'display:inline', 'files' => true]) !!}
             <div class="form-group {{ $errors->has('member_id') ? 'has-error' : ''}}">
                 {!! Form::label('member_id', 'Учасник', ['class' => 'col-sm-2 control-label']) !!}

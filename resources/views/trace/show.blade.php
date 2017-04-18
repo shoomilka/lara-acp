@@ -43,7 +43,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th> Назва </th><th> Координата </th><th> Початок </th><th> Завершення </th>
+                    <th>S.No</th><th> Назва </th><th> Координата </th><th> Початок </th><th> Завершення </th><th> Дії </th>
                 </tr>
             </thead>
             <tbody>

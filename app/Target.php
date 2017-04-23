@@ -25,6 +25,8 @@ class Target extends Model {
      */
     protected $fillable = ['title', 'trace_id', 'coordinate', 'start', 'finish'];
 
+    protected $dates = ['created_at', 'updated_at', 'start','finish'];
+
     static function getValidationRules() {
         return array(
             'trace_id' => 'required|exists:traces,id',

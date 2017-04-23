@@ -2,8 +2,6 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-use Carbon\Carbon;
-
 class Trace extends Model {
 
 	/**
@@ -26,6 +24,8 @@ class Trace extends Model {
      * @var array
      */
     protected $fillable = ['title', 'email_id', 'user_id', 'start', 'finish', 'description'];
+
+    protected $dates = ['created_at', 'updated_at', 'start','finish'];
 
     static function getValidationRules() {
         return array(

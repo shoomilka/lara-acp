@@ -3,6 +3,7 @@
 use App\Trace;
 use App\Check;
 use App\Member;
+use App\Registered;
 
 class WelcomeController extends Controller {
 
@@ -44,8 +45,11 @@ class WelcomeController extends Controller {
 	}
 
 	public function trace($id){
-		$checks = Check::where('checked', true)->orderBy('phone')->paginate(25);
-		$members = Member::all()->lists('name', 'phone');
-		return view('trace', compact(array('checks', 'members')));
+		$trace = Trace::find($id);
+		$checks = Check::where('checked', true)->get();
+		$registered = Registered::where('trace_id', $id)->get()->lists('member_id');
+		$members = Member::whereIn('id', $registered)->get();
+		$targets = $trace->hasMany('App\Target')->orderBy('coordinate')->get();
+		return view('trace', compact(array('checks', 'members', 'targets', 'trace')));
 	}
 }

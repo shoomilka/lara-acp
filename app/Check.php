@@ -25,4 +25,6 @@ class Check extends Model {
      */
     protected $fillable = ['time', 'phone', 'checked', 'target_id', 'target_title'];
 
+    protected $dates = ['created_at', 'updated_at', 'time'];
+
 }

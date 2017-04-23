@@ -6,6 +6,7 @@ use App\Shpop3x;
 use App\Check;
 use Carbon\Carbon;
 use App\Target;
+use App\Member;
 
 class Email extends Model {
 
@@ -64,19 +65,27 @@ class Email extends Model {
 			$target_title = $target_title['name'][0];
 			$target_array = preg_split('/, /', $target_title);
 			$place = trim(end($target_array));
-
-			$targets = Target::where('title', $place)->get();
-			$target_id = 0;
-			foreach($targets as $target){
-				$trace = $target->hasOne('App\Trace', 'id', 'trace_id')->first();
-                if($trace->email_id != $this->id) continue;
-				$start_at = Carbon::createFromFormat('Y-m-d H:i:s', $trace->start);
-				$finish_at = Carbon::createFromFormat('Y-m-d H:i:s', $trace->finish);
-				if($start_at->lt($msg_date) && $msg_date->lt($finish_at)){
-					$target_id = $target->id;
-					break;
-				}
+			
+			preg_match('/\d{10}/', $t, $number);
+			$number = $number[0];
+			
+			// вибрати унікальні траси, на які їде цей телефон і взяти ті таргет, що
+			// відносяться до цієї траси, потім перевірка на тайтл і запис в чек
+			
+			$members = Member::where('phone', $number)->get();
+			$traces = collect();
+			foreach($members as $member){
+				$trs = $member->belongsToMany('App\Trace', 'registered', 
+      						'member_id', 'trace_id')->get();
+				$traces = $traces->merge($trs);
 			}
+
+			$targets = Target::where('finish', '>', $msg_date)->where('start', '<', $msg_date)
+							 ->whereIn('trace_id', $traces->lists('id'))->where('title', $place)
+							 ->get();
+			$target_id = 0;
+
+			if($targets->count() > 0) $target_id = $targets->first()->id;
 
 			$check = array();
 			$check['target_id'] = $target_id;
@@ -84,11 +93,10 @@ class Email extends Model {
 			$check['time'] = $msg_date;
 
 			if($target_id != 0) $check['checked'] = true;
-			preg_match('/\d{10}/', $t, $number);
-			$check['phone'] = $number[0];
+			
+			$check['phone'] = $number;
 
 			Check::create($check);
-			Trace::checkActive();
 		}
     }
 

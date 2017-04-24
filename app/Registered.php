@@ -25,4 +25,6 @@ class Registered extends Model {
      */
     protected $fillable = ['member_id', 'trace_id'];
 
+    protected $dates = ['created_at', 'updated_at'];
+
 }

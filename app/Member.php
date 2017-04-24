@@ -25,6 +25,8 @@ class Member extends Model {
      */
     protected $fillable = ['name', 'phone', 'user_id', 'city', 'year', 'cycle', 'nick'];
 
+    protected $dates = ['created_at', 'updated_at'];
+
     static function getValidationRules() {
         return array(
             'user_id' => 'required|exists:users,id',

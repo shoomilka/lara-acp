@@ -31,6 +31,8 @@ class Email extends Model {
      */
     protected $fillable = ['email', 'pass', 'user_id', 'pop3', 'port'];
 
+	protected $dates = ['created_at', 'updated_at'];
+
     static function getValidationRules() {
         return array(
             'email' => 'required|email',
@@ -42,7 +44,7 @@ class Email extends Model {
     }
 
     public function receiveLetters(){
-        $last_time = Carbon::createFromFormat('Y-m-d H:i:s', Check::all()->last()->time);
+        $last_time = Check::all()->last()->time;
 
 		$imap = Shpop3x::create($this->pop3, $this->email, $this->pass, $this->port);
 		$imap->connect();

@@ -4,6 +4,7 @@ use App\Trace;
 use App\Check;
 use App\Member;
 use App\Registered;
+use Carbon\Carbon;
 
 class WelcomeController extends Controller {
 
@@ -50,6 +51,7 @@ class WelcomeController extends Controller {
 		$registered = Registered::where('trace_id', $id)->get()->lists('member_id');
 		$members = Member::whereIn('id', $registered)->get();
 		$targets = $trace->hasMany('App\Target')->orderBy('coordinate')->get();
-		return view('trace', compact(array('checks', 'members', 'targets', 'trace')));
+		Carbon::now()->gt($trace->finish) ? $are_results = true : $are_results = false;
+		return view('trace', compact(array('checks', 'members', 'targets', 'trace', 'are_results')));
 	}
 }

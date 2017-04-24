@@ -89,7 +89,19 @@
                         @endif
                         <?php $j++; ?>
                     @endforeach
-                    <td class={{ ($flag != $targets->count()) ? 'danger' : 'success' }}> {{ ($flag != $targets->count()) ? 'DNF' : '+' }} </td>
+                    @if($are_results)
+                        <td class={{
+                            ($flag != $targets->count()) ? 'danger' : 'success'
+                        }}> {{
+                            ($flag != $targets->count()) ? 'DNF' : '+'
+                        }} </td>
+                    @else
+                        <td class={{
+                            ($flag != $targets->count()) ? '' : 'success'
+                        }}> {{
+                            ($flag != $targets->count()) ? '' : '+'
+                        }} </td>
+                    @endif
                 </tr>
                 <?php $flag = 0; ?>
             @endforeach

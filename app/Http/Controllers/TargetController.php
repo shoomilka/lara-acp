@@ -56,6 +56,9 @@ class TargetController extends Controller {
                         ->withInput();
         }
 
+		$requestData['start'] .= ':00';
+		$requestData['finish'] .= ':00';
+
         Target::create($requestData);
 
         Session::flash('flash_message', 'Target added!');
@@ -105,6 +108,9 @@ class TargetController extends Controller {
                         ->withErrors($validator)
                         ->withInput();
         }
+
+		$requestData['start'] .= ':00';
+		$requestData['finish'] .= ':00';
 
 		$trace = Target::findOrFail($id);
         $trace->update($requestData);

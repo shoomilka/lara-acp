@@ -32,8 +32,8 @@ class Target extends Model {
             'trace_id' => 'required|exists:traces,id',
             'title' => 'required|min:3',
             'coordinate' => 'required|numeric|min:1',
-            'start' => 'required|date_format:d-m-Y H:i',
-			'finish' => 'required|date_format:d-m-Y H:i',
+            'start' => 'required|date_format:Y-m-d H:i',
+			'finish' => 'required|date_format:Y-m-d H:i',
         );
     }
 

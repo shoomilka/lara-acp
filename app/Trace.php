@@ -32,8 +32,8 @@ class Trace extends Model {
             'email_id' => 'required|exists:emails,id',
             'user_id' => 'required|exists:users,id',
             'title' => 'required|min:6',
-			'start' => 'required|date_format:d-m-Y H:i|after:yesterday',
-			'finish' => 'required|date_format:d-m-Y H:i|after:yesterday',
+			'start' => 'required|date_format:Y-m-d H:i|after:yesterday',
+			'finish' => 'required|date_format:Y-m-d H:i|after:yesterday',
             'description' => 'required',
         );
     }

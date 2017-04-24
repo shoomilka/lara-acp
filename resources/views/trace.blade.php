@@ -8,20 +8,23 @@
             <thead>
                 <tr>
                     <th colspan="6"> {{ $trace->title }} </th>
+                    <?php $i = 1; ?>
                     @foreach($targets as $item)
-                        <th colspan="3"> {{ $item->title }} </th>
+                        <?php $i % 2 ? $color = 'info' : $color = ''; ?>
+                        <th colspan="3" class="{{ $color }}"> {{ $item->title }} </th>
+                        <?php $i++; ?>
                     @endforeach
-                    <th colspan="1" rowspan="3"> Відстав </th>
-                    <th colspan="1" rowspan="3"> Рзультат </th>
+                    <th colspan="1" rowspan="3"> Результат </th>
                 </tr>
                 <tr>
                     <th colspan="4"> Дата старту: {{ $trace->start->format('d/m/Y') }} </th>
                     <th colspan="2"> Час: {{ $trace->start->format('h:i') }} </th>
                     <?php $i = 1 ?>
                     @foreach($targets as $item)
-                        <th> КП {{ $i++ }} </th>
-                        <th> Відстань </th>
-                        <th> {{ $item->coordinate }} km </th>
+                        <?php $i % 2 ? $color = 'info' : $color = ''; ?>
+                        <th class="{{ $color }}"> КП {{ $i++ }} </th>
+                        <th class="{{ $color }}"> Відстань </th>
+                        <th class="{{ $color }}"> {{ $item->coordinate }} km </th>
                     @endforeach
                 </tr>
                 <tr>
@@ -31,10 +34,13 @@
                     <th rowspan="2"> Місто </th>
                     <th rowspan="2"> Байк </th>
                     <th rowspan="2"> Нік </th>
+                    <?php $i = 1; ?>
                     @foreach($targets as $item)
-                        <th> Час </th>
-                        <th> В дорозі </th>
-                        <th> V середнє </th>
+                        <?php $i % 2 ? $color = 'info' : $color = ''; ?>
+                        <th class="{{ $color }}"> Час </th>
+                        <th class="{{ $color }}"> В дорозі </th>
+                        <th class="{{ $color }}"> V середнє </th>
+                        <?php $i++; ?>
                     @endforeach
                 </tr>
             </thead>
@@ -55,33 +61,35 @@
                     <td>{{ $item->city }}</td>
                     <td>{{ $item->cycle }}</td>
                     <td>{{ $item->nick }}</td>
+                    <?php $j = 1; ?>
                     @foreach($targets as $target)
                         <?php
+                            ($j % 2) ? $color = 'info' : $color = 'success';
                             $check = $checks->where('target_id', $target->id)
                                             ->where('phone', $item->phone)
                                             ->where('checked', '1')
                                             ->sortBy('time')->first();
                         ?>
                         @if(isset($check->time))
-                            <td>{{ $check->time->format('d/m h:i:s') }}</td>
+                            <td class="{{ $color }}">{{ $check->time->format('d/m h:i:s') }}</td>
                         <?php
                             $diff = $check->time->diffInMinutes($prev);
                         ?>
-                            <td> {{ $diff }} хв.</td>
-                            <td> {{ 60*($target->coordinate - $last_co)/$diff }} </td>
+                            <td class="{{ $color }}"> {{ $diff }} хв.</td>
+                            <td class="{{ $color }}"> {{ 60*($target->coordinate - $last_co)/$diff }} </td>
                         <?php
                             $flag++;
                             $prev = $check->time;
                             $last_co = $target->coordinate;
                         ?>
                         @else
-                            <td> - </td>
-                            <td> - </td>
-                            <td> - </td>
+                            <td class="danger"> - </td>
+                            <td class="danger"> - </td>
+                            <td class="danger"> - </td>
                         @endif
+                        <?php $j++; ?>
                     @endforeach
-                    <td> - </td>
-                    <td> {{ ($flag != $targets->count()) ? 'DNF' : 'Congratulations!' }} </td>
+                    <td class={{ ($flag != $targets->count()) ? 'danger' : 'success' }}> {{ ($flag != $targets->count()) ? 'DNF' : '+' }} </td>
                 </tr>
                 <?php $flag = 0; ?>
             @endforeach

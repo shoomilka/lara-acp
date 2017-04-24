@@ -4,7 +4,7 @@
 <div class="container">
 
     <h1>Бревет #{{ $trace->id }}
-        <a href="{{ 'trace/' . $trace->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати бревет"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
+        <a href="{{ '/index.php/trace/' . $trace->id . '/edit' }}" class="btn btn-primary btn-xs" title="Редагувати бревет"><span class="glyphicon glyphicon-pencil" aria-hidden="true"/></a>
         {!! Form::open([
             'method'=>'DELETE',
             'url' => ['trace', $trace->id],

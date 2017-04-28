@@ -43,7 +43,6 @@
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="/index.php/auth/login">Login</a></li>
-						<li><a href="/index.php/auth/register">Register</a></li>
 					@else
 						<li class="dropdown">
 							<a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
@@ -103,5 +102,15 @@
     		$(".dropdown-toggle").dropdown();
 		});
     </script>
+
+	<script>
+  		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		  
+  		ga('create', 'UA-73644057-2', 'auto');
+  		ga('send', 'pageview');
+	</script>
 </body>
 </html>

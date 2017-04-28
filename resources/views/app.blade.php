@@ -67,8 +67,8 @@
         <div class="text-center">
         	Copyright © 2017 <b>shoomilka</b>
 			<br />Uliana Shumilina - shoomilka@i.ua
-			<br /><a href="https://vk.com/shoomilka"> VK </a> - 
-			<a href="https://www.facebook.com/blackyshum"> FB </a>
+			<br /><a href="https://vk.com/shoomilka" target="_blank"> VK </a> - 
+			<a href="https://www.facebook.com/blackyshum" target="_blank"> FB </a>
         </div>
       </div>
   </div><!--/container-->

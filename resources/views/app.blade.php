@@ -59,6 +59,22 @@
 
 	@yield('content')
 
+<div id="footer">
+<div class="container">
+  <div class="row">
+
+      <div class="row" id="final-footer">
+        <div class="text-center">
+        	Copyright © 2017 <b>shoomilka</b>
+			<br />Uliana Shumilina - shoomilka@i.ua
+			<br /><a href="https://vk.com/shoomilka"> VK </a> - 
+			<a href="https://www.facebook.com/blackyshum"> FB </a>
+        </div>
+      </div>
+  </div><!--/container-->
+</div><!--/footer-->
+</div>
+
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>

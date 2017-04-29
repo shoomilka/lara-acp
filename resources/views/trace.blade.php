@@ -18,7 +18,7 @@
                 </tr>
                 <tr>
                     <th colspan="4"> Дата старту: {{ $trace->start->format('d/m/Y') }} </th>
-                    <th colspan="2"> Час: {{ $trace->start->format('h:i') }} </th>
+                    <th colspan="2"> Час: {{ $trace->start->format('H:i') }} </th>
                     <?php $i = 1 ?>
                     @foreach($targets as $item)
                         <?php $i % 2 ? $color = 'info' : $color = ''; ?>
@@ -60,12 +60,8 @@
             <tbody>
             
             <?php
-                $i = 0;
-                $prev = $trace->start;
-                $last_co = 0;
-                $flag = 0;
+                $i = 0;  
             ?>
-
             @foreach($members as $item)
                 <tr>
                     <td>{{ ++$i }}</td>
@@ -74,7 +70,10 @@
                     <td>{{ $item->city }}</td>
                     <td>{{ $item->cycle }}</td>
                     <td>{{ $item->nick }}</td>
-                    <?php $j = 1; ?>
+                    <?php $j = 1;
+                    $prev = $trace->start;
+                    $last_co = 0;
+                    $flag = 0;?>
                     @foreach($targets as $target)
                         <?php
                             ($j % 2) ? $color = 'info' : $color = 'success';
@@ -84,7 +83,7 @@
                                             ->sortBy('time')->first();
                         ?>
                         @if(isset($check->time))
-                            <td class="{{ $color }}">{{ $check->time->format('d/m h:i') }}</td>
+                            <td class="{{ $color }}">{{ $check->time->format('d/m H:i') }}</td>
                         <?php
                             $diff = $check->time->diffInMinutes($prev);
                         ?>

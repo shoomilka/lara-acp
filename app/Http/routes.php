@@ -16,6 +16,7 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('traces', 'WelcomeController@traces');
 Route::get('results/{id}', 'WelcomeController@trace');
+Route::get('receive/emails', 'CheckController@create');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

@@ -9,6 +9,9 @@ use Auth;
 use App\Check;
 use App\Target;
 
+use App\Email;
+use Carbon\Carbon;
+
 class CheckController extends Controller {
 
 	/**
@@ -30,7 +33,13 @@ class CheckController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$emails = Email::all();
+		foreach($emails as $email){
+			$traces = $email->hasMany('App\Trace', 'email_id')
+							->where('finish', '>', Carbon::now())->get();
+			if($traces->count() > 0) $email->receiveLetters();
+		}
+		echo 'finish';
 	}
 
 	/**

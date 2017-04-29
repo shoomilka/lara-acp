@@ -57,12 +57,12 @@ class Email extends Model {
 			if($imap->totalEmail() < $i) break;
 			$msg = $imap->readMail($i);
 			$msg_date = $msg->getDate('Y-m-d H:i:s');
-			$msg_date = Carbon::createFromFormat('Y-m-d H:i:s', $msg_date);
+			$msg_date = Carbon::createFromFormat('Y-m-d H:i:s', $msg_date)->addHours(3);
 
 			if($msg_date->lte($last_time)) continue;
 			$t = base64_decode($msg->getBody('text', false));
 
-			preg_match_all('/місцезнаходження: \b(?<name>[\w|\s|,]+)Для/u', $t, $target_title);
+			preg_match_all('/місцезнаходження: \b(?<name>[\w|\s|,|.|\']+)Для/u', $t, $target_title);
 
 			$target_title = $target_title['name'][0];
 			$target_array = preg_split('/, /', $target_title);
@@ -70,10 +70,10 @@ class Email extends Model {
 			
 			preg_match('/\d{10}/', $t, $number);
 			$number = $number[0];
-			
+
 			// вибрати унікальні траси, на які їде цей телефон і взяти ті таргет, що
 			// відносяться до цієї траси, потім перевірка на тайтл і запис в чек
-			
+		
 			$members = Member::where('phone', $number)->get();
 			$traces = collect();
 			foreach($members as $member){

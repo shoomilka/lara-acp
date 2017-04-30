@@ -73,7 +73,8 @@
                     <?php $j = 1;
                     $prev = $trace->start;
                     $last_co = 0;
-                    $flag = 0;?>
+                    $flag = 0;
+                    ?>
                     @foreach($targets as $target)
                         <?php
                             ($j % 2) ? $color = 'info' : $color = 'success';
@@ -99,24 +100,23 @@
                             <td class="danger"> - </td>
                             <td class="danger"> - </td>
                         @endif
-                        <?php $j++; ?>
+                        <?php
+                            $j++;
+                        ?>
                     @endforeach
                     <?php
-                        if(isset($check->time)) $diff = $check->time->diffInMinutes($trace->start);
+                        if(isset($check->time)){
+                            $diff = $check->time->diffInMinutes($trace->start);
+                            $res = str_pad(floor($diff / 60), 2, "0", STR_PAD_LEFT) .':'. str_pad(($diff % 60), 2, "0", STR_PAD_LEFT);
+                        }
+                        $empty_res = $are_results ? 'DNF' : '';
+                        $empty_color = $are_results ? 'danger' : '';
                     ?>
-                    @if($are_results)
-                        <td class={{
-                            ($flag != $targets->count()) ? 'danger' : 'success'
-                        }}> {{
-                            ($flag != $targets->count()) ? 'DNF' : str_pad(floor($diff / 60), 2, "0", STR_PAD_LEFT) .':'. str_pad(($diff % 60), 2, "0", STR_PAD_LEFT)
-                        }} </td>
-                    @else
-                        <td class={{
-                            ($flag != $targets->count()) ? '' : 'success'
-                        }}> {{
-                            ($flag != $targets->count()) ? '' : str_pad(floor($diff / 60), 2, "0", STR_PAD_LEFT) .':'. str_pad(($diff % 60), 2, "0", STR_PAD_LEFT)
-                        }} </td>
-                    @endif
+                    <td class={{
+                        ($flag != $targets->count()) ? (isset($check->time)) ? 'warning' : $empty_color : 'success'
+                    }}> {{
+                        ($flag != $targets->count()) ? (isset($check->time)) ? $res : $empty_res : $res
+                    }} </td>
                 </tr>
                 <?php $flag = 0; ?>
             @endforeach

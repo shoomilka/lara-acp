@@ -105,6 +105,7 @@
                         ?>
                     @endforeach
                     <?php
+                        $res = '';
                         if(isset($check->time)){
                             $diff = $check->time->diffInMinutes($trace->start);
                             $res = str_pad(floor($diff / 60), 2, "0", STR_PAD_LEFT) .':'. str_pad(($diff % 60), 2, "0", STR_PAD_LEFT);

@@ -89,7 +89,8 @@ class TraceController extends Controller {
 		$email = Email::find($trace->email_id);
 		$targets = $trace->hasMany('App\Target', 'trace_id', 'id')
 						 ->orderBy('coordinate')->paginate(25);
-		$members = Member::where('user_id', Auth::id())->lists('name', 'id');
+		$members = Member::where('user_id', Auth::id())->orderBy('name')
+						 ->lists('name', 'id');
 		$current_members = Registered::where('trace_id', $id)
 									 ->lists('created_at', 'member_id');
 		$members = array_diff_key($members, $current_members);

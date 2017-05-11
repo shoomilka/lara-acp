@@ -27,4 +27,11 @@ class Check extends Model {
 
     protected $dates = ['created_at', 'updated_at', 'time'];
 
+    static function getValidationRules() {
+        return array(
+            'time' => 'required|date_format:Y-m-d H:i',
+			'phone' => 'required|regex:/(\d\d\d\d\d\d\d\d\d\d)/',
+            'target_id' => 'required',
+        );
+    }
 }

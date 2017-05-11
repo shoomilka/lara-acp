@@ -12,6 +12,10 @@ use App\Target;
 use App\Email;
 use Carbon\Carbon;
 
+use Validator;
+use Redirect;
+use Session;
+
 class CheckController extends Controller {
 
 	/**
@@ -33,13 +37,8 @@ class CheckController extends Controller {
 	 */
 	public function create()
 	{
-		$emails = Email::all();
-		foreach($emails as $email){
-			$traces = $email->hasMany('App\Trace', 'email_id')
-							->where('finish', '>', Carbon::now())->get();
-			if($traces->count() > 0) $email->receiveLetters();
-		}
-		echo 'finish';
+		$targets = Target::all()->lists('title', 'id');
+		return view('check.create', compact('targets'));
 	}
 
 	/**
@@ -47,9 +46,25 @@ class CheckController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$requestData = $request->all();
+
+        $validator = Validator::make($requestData, Check::getValidationRules());
+        if ($validator->fails()) {
+            return redirect::back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+		$requestData['time'] .= ':00';
+		$requestData['checked'] = true;
+
+        Check::create($requestData);
+
+        Session::flash('flash_message', 'Check added!');
+
+		return redirect('check');
 	}
 
 	/**
@@ -99,6 +114,16 @@ class CheckController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function updateAll(){
+		$emails = Email::all();
+		foreach($emails as $email){
+			$traces = $email->hasMany('App\Trace', 'email_id')
+							->where('finish', '>', Carbon::now())->get();
+			if($traces->count() > 0) $email->receiveLetters();
+		}
+		echo 'finish';
 	}
 
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<h1>Checks</h1>
+	<h1>Checks <a href="{{ '/index.php/check/create' }}" class="btn btn-primary btn-xs" title="Додати новий"><span class="glyphicon glyphicon-plus" aria-hidden="true"/></a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>

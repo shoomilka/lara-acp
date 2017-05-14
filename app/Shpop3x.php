@@ -9,7 +9,7 @@ class Shpop3x extends Imapx {
 
     static function create($host, $username, $password, $port)
 	{
-        $instance = new self();
+		$instance = new self();
         
 		$instance->driver='pop3';
 		$instance->hostname=$host;
@@ -18,10 +18,6 @@ class Shpop3x extends Imapx {
 		$instance->port=':'.$port;
 		$instance->ssl=config('imapx.ssl')?'/ssl':'';
 		$instance->novalidate=config('imapx.novalidate')?'/novalidate-cert':'';
-
-		if(config('imapx.auto-connect')){
-			$instance->connect();
-		}
 
         return $instance;
 	}

@@ -62,7 +62,7 @@ class Email extends Model {
 			if($msg_date->lte($last_time)) continue;
 			$t = base64_decode($msg->getBody('text', false));
 
-			preg_match_all('/місцезнаходження: \b(?<name>[\w|\s|,|.|\']+)Для/u', $t, $target_title);
+			preg_match_all('/місцезнаходження: \b(?<name>[\w|\s|,|.|\'|-]+)Для/u', $t, $target_title);
 
 			$target_title = $target_title['name'][0];
 			$target_array = preg_split('/, /', $target_title);
